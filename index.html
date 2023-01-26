@@ -1,7 +1,42 @@
 <html>
-  <head>
-  </head>
-  <body>
-    You got tricked!
-  </body>
+    <head>
+        <style>
+            #content{
+                font-family: monospace;
+            }
+        </style>
+        <script>
+            function loadjson() {
+                data = []            
+ 
+                let mapHeight = 0;   
+                let mapWidth = 0;  
+                
+                for (let num=0; num<6;num++){
+                    for (let i = 0; i < mapHeight; i++) {
+                        let temp = [];
+                        for (let j = 0; j < mapWidth; j++) {
+                            tile = data[num * mapWidth * mapHeight + i * mapWidth + j]
+                            temp.push(tile);
+                            if (tile < 1000){
+                                document.getElementById("content").innerHTML += "&nbsp";
+                            }
+                            if (tile < 100){
+                                document.getElementById("content").innerHTML += "&nbsp";
+                            }
+                            if (tile < 10){
+                                document.getElementById("content").innerHTML += "&nbsp";
+                            }
+                            document.getElementById("content").innerHTML +=(tile + ",")
+                        }
+                        document.getElementById("content").innerHTML +=("<br>"); 
+                    }
+                    document.getElementById("content").innerHTML +=("<br><br><br><br>"); 
+                }
+            }
+        </script>
+    </head>
+    <body onload="loadjson()">
+        <div id="content"></div>
+    </body>
 </html>
